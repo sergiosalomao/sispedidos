@@ -12,7 +12,18 @@ class Fornecedor extends Model
 
     protected $fillable = [
         'nome',
-        'cpfcnpj'
+        'cpfcnpj',
+        'telefone',
+        'contato',
+        'cep',
+        'bairro',
+        'logradouro',
+        'cidade',
+        'uf',
+        'status',
+        'obs',
+        'email',
+        'numero'
     ];
 
 }

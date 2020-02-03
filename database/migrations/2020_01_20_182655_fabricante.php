@@ -13,7 +13,18 @@ class Fabricante extends Migration
             function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('nome');
-                $table->string('cpfcnpj');
+                $table->string('cpfcnpj')->nullable();
+                $table->string('telefone')->nullable();
+                $table->string('contato')->nullable();
+                $table->string('email')->nullable();
+                $table->string('cep')->nullable();
+                $table->string('bairro')->nullable();
+                $table->string('logradouro')->nullable();
+                $table->string('numero')->nullable();
+                $table->string('cidade')->nullable();
+                $table->string('uf')->nullable();
+                $table->text('obs')->nullable();
+                $table->enum('status', ['Ativo', 'Inativo'])->default('Ativo');
                 $table->timestamps();
             }
         );

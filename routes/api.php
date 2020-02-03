@@ -18,4 +18,10 @@ Route::apiResource('categorias', 'CategoriaController');
 Route::apiResource('fabricantes', 'FabricanteController');
 Route::apiResource('fornecedores', 'FornecedorController');
 Route::apiResource('produtos', 'ProdutoController');
-Route::apiResource('users', 'UserController');
+Route::apiResource('imagens', 'ImagemController');
+Route::apiResource('usuarios', 'UserController');
+
+Route::post('register', 'AuthController@register');
+Route::put('register/{id}', 'AuthController@update');
+Route::get('me', 'AuthController@me');
+Route::post('login', 'AuthController@login');

@@ -10,7 +10,18 @@ class Fabricante extends Model
 
     protected $fillable = [
         'nome',
-        'cpfcnpj'
+        'cpfcnpj',
+        'numero',
+        'telefone',
+        'contato',
+        'cep',
+        'bairro',
+        'logradouro',
+        'cidade',
+        'uf',
+        'status',
+        'obs',
+        'email'
     ];
 
 }

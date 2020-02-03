@@ -3,30 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoriaRequest;
-use App\Categoria;
+use App\Http\Requests\ImagemRequest;
+use App\Imagem;
 
-class CategoriaController extends Controller
+class ImagemController extends Controller
 {
 
-    public function index(Request $request, Categoria $categoria)
+    public function index(Request $request, Imagem $Imagem)
     {
-        $dados = $categoria->newQuery();
-        if ($request->filled('descricao')) {
-            $dados->where('descricao', 'like', '%' . $request->descricao . '%');
+        $dados = $Imagem->newQuery();
+        if ($request->filled('produto_id')) {
+            $dados->where('nome', $request->produto_id);
         }
-
-        $dados = $dados->orderBy('descricao');
+        $dados = $dados->with(['produto'])->orderBy('id');
 
         return response()->json($dados->paginate(5), 200);
     }
 
 
-    public function store(CategoriaRequest $request)
+    public function store(ImagemRequest $request)
     {
         $param = $request->all();
         try {
-            $dados = Categoria::create($param);
+            $dados = Imagem::create($param);
         } catch (Exception $e) {
             return response('Erro:' . $e->getMessage(), 500);
         }
@@ -37,7 +36,7 @@ class CategoriaController extends Controller
     public function show($id)
     {
         try {
-            $dados = Categoria::find($id);
+            $dados = Imagem::find($id);
             if (empty($dados)) {
                 return response('registro nao encontrado.', 200);
             }
@@ -53,7 +52,7 @@ class CategoriaController extends Controller
     {
         $param = $request->all();
         try {
-            $dados = Categoria::findOrFail($id);
+            $dados = Imagem::findOrFail($id);
             $dados->update($param);
         } catch (Exception $e) {
             return response('Erro:' . $e->getMessage(), 500);
@@ -64,9 +63,8 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        
         try {
-            $dados = Categoria::find($id);
+            $dados = Imagem::find($id);
             if (empty($dados)) {
                 return response('registro nao encontrado.', 200);
             }

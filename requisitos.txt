@@ -1,0 +1,25 @@
+criar uma tabela de categoria fornecedores pra futuramento consultar um fornecedor por categoria tipo fornecedores de material de limpeza
+um fornecedor pode ter varias categorias
+
+adicionar campos em fornecedor 
+endereco - logradouro - cep - numero - bairro
+email
+contato
+telefone
+obs
+
+
+adicionar campos em fabricante
+endereco
+email
+contato
+telefone
+obs
+
+iniciar front 
+cadastros e consulta inicial
+fazer as devidas validacoes no backend
+
+finalizar em cadastrar e listar um produto no front
+
+
