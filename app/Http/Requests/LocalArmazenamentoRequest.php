@@ -6,9 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class ClienteRequest extends FormRequest
+class LocalArmazenamentoRequest extends FormRequest
 {
-
     public function authorize()
     {
         return true;
@@ -18,9 +17,7 @@ class ClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required',
-            'cpfcnpj' => 'required',
-
+            'descricao' => 'required',
         ];
     }
 
@@ -28,7 +25,6 @@ class ClienteRequest extends FormRequest
     {
         return [
             'descricao.required' => 'Descricao é obrigatoria',
-            'cpfcnpj.required' => 'CPF/CNPJ é obrigatorio',
         ];
     }
 

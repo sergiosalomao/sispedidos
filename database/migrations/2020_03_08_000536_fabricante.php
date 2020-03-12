@@ -4,16 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Fornecedor extends Migration
+class Fabricante extends Migration
 {
     public function up()
     {
         Schema::create(
-            'fornecedores',
+            'fabricantes',
             function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('nome');
-                $table->string('cpfcnpj')->nullable();
+                $table->string('nome_fantasia');
+                $table->string('razao_social')->nullable();
+                $table->string('cpf_cnpj')->nullable();
+                $table->string('site')->nullable();
                 $table->string('telefone')->nullable();
                 $table->string('contato')->nullable();
                 $table->string('email')->nullable();

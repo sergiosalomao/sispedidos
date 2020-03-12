@@ -17,6 +17,7 @@ Route::apiResource('clientes', 'ClienteController');
 Route::apiResource('categorias', 'CategoriaController');
 Route::apiResource('fabricantes', 'FabricanteController');
 Route::apiResource('fornecedores', 'FornecedorController');
+Route::apiResource('armazenamentos', 'LocalArmazenamentoController');
 Route::apiResource('produtos', 'ProdutoController');
 Route::apiResource('imagens', 'ImagemController');
 Route::apiResource('usuarios', 'UserController');

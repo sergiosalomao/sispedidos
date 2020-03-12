@@ -3,32 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\FornecedorRequest;
-use App\Fornecedor;
+use App\Http\Requests\LocalArmazenamentoRequest;
+use App\LocalArmazenamento;
 
-class FornecedorController extends Controller
+class LocalArmazenamentoController extends Controller
 {
 
-    public function index(Request $request, Fornecedor $Fornecedor)
+    public function index(Request $request, LocalArmazenamento $LocalArmazenamento)
     {
-        $dados = $Fornecedor->newQuery();
-        if ($request->filled('nome')) {
-            $dados->where('nome', 'like', '%' . $request->nome . '%');
+        $dados = $LocalArmazenamento->newQuery();
+        if ($request->filled('descricao')) {
+            $dados->where('descricao', 'like', '%' . $request->descricao . '%');
         }
-        if ($request->filled('cpfcnpj')) {
-            $dados->where('cpfcnpj', '=',  $request->cpfcnpj );
-        }
-        $dados = $dados->orderBy('nome');
+
+        $dados = $dados->orderBy('descricao');
 
         return response()->json($dados->paginate(5), 200);
     }
 
 
-    public function store(FornecedorRequest $request)
+    public function store(LocalArmazenamentoRequest $request)
     {
         $param = $request->all();
         try {
-            $dados = Fornecedor::create($param);
+            $dados = LocalArmazenamento::create($param);
         } catch (Exception $e) {
             return response('Erro:' . $e->getMessage(), 500);
         }
@@ -39,7 +37,7 @@ class FornecedorController extends Controller
     public function show($id)
     {
         try {
-            $dados = Fornecedor::find($id);
+            $dados = LocalArmazenamento::find($id);
             if (empty($dados)) {
                 return response('registro nao encontrado.', 200);
             }
@@ -55,7 +53,7 @@ class FornecedorController extends Controller
     {
         $param = $request->all();
         try {
-            $dados = Fornecedor::findOrFail($id);
+            $dados = LocalArmazenamento::findOrFail($id);
             $dados->update($param);
         } catch (Exception $e) {
             return response('Erro:' . $e->getMessage(), 500);
@@ -66,8 +64,9 @@ class FornecedorController extends Controller
 
     public function destroy($id)
     {
+        
         try {
-            $dados = Fornecedor::find($id);
+            $dados = LocalArmazenamento::find($id);
             if (empty($dados)) {
                 return response('registro nao encontrado.', 200);
             }

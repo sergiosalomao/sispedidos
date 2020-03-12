@@ -18,8 +18,8 @@ class FabricanteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required',
-            'cpfcnpj' => 'required',
+            'nome_fantasia' => 'required',
+            'cpf_cnpj' => 'required',
 
         ];
     }
@@ -27,8 +27,8 @@ class FabricanteRequest extends FormRequest
     public function messages()
     {
         return [
-            'descricao.required' => 'Descricao é obrigatoria',
-            'cpfcnpj.required' => 'CPF/CNPJ é obrigatorio',
+            'nome_fantasia.required' => 'nome fantasia é obrigatorio',
+            'cpf_cnpj.required' => 'CPF/CNPJ é obrigatorio',
         ];
     }
 
