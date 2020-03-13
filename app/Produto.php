@@ -9,10 +9,10 @@ class Produto extends Model
     protected $hidden = ['created_at', 'updated_at'];
 
     protected $fillable = [
-        "data_lancamento",
+        "datacadastro","data_validade",
         "titulo",
         "descricao",
-        "valor",
+        "lote",
         "status",
         "categoria_id",
         "codigobarras",
@@ -22,8 +22,9 @@ class Produto extends Model
         "obs",
         "user_id",
         "fornecedor_id",
-        "fabricante_id",
+        "fabricante_id","local_armazenamento_id","status"
     ];
+
     public function user()
     {
         return $this->belongsTo('App\User');

@@ -12,13 +12,13 @@ class FabricanteController extends Controller
     public function index(Request $request, Fabricante $Fabricante)
     {
         $dados = $Fabricante->newQuery();
-        if ($request->filled('nome')) {
-            $dados->where('nome', 'like', '%' . $request->nome . '%');
+        if ($request->filled('nome_fantasia')) {
+            $dados->where('nome_fantasia', 'like', '%' . $request->nome_fantasia . '%');
         }
-        if ($request->filled('cpfcnpj')) {
-            $dados->where('cpfcnpj', '=',  $request->cpfcnpj );
+        if ($request->filled('cpf_cnpj')) {
+            $dados->where('cpf_cnpj', '=',  $request->cpf_cnpj );
         }
-        $dados = $dados->orderBy('nome');
+        $dados = $dados->orderBy('nome_fantasia');
 
         return response()->json($dados->paginate(5), 200);
     }

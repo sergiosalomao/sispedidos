@@ -13,7 +13,7 @@ class ProdutoController extends Controller
     {
         $dados = $Produto->newQuery();
         if ($request->filled('descricao')) {
-            $dados->where('nome', 'like', '%' . $request->descricao . '%');
+            $dados->where('descricao', 'like', '%' . $request->descricao . '%');
         }
         $dados = $dados->with(['user','fabricante','fornecedor','categoria'])->orderBy('id');
 
@@ -24,6 +24,8 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         $param = $request->all();
+       
+       
         try {
             $dados = Produto::create($param);
         } catch (Exception $e) {

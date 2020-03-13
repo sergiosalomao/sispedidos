@@ -22,14 +22,22 @@ class Produto extends Migration
                 $table->date('data_validade')->nullable();
                 $table->string('descricao');
                 $table->string('lote');
+               
                 $table->unsignedBigInteger('fornecedor_id');
                 $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
+
                 $table->unsignedBigInteger('fabricante_id');
                 $table->foreign('fabricante_id')->references('id')->on('fabricantes');
+
                 $table->unsignedBigInteger('categoria_id');
                 $table->foreign('categoria_id')->references('id')->on('categorias');
+                
+                $table->unsignedBigInteger('user_id');
+                $table->foreign('user_id')->references('id')->on('users');
+               
                 $table->unsignedBigInteger('local_armazenamento_id');
                 $table->foreign('local_armazenamento_id')->references('id')->on('local_armazenamento');
+               
                 $table->enum('status', ['Disponivel', 'Indisponivel'])->default('Disponivel');
                 $table->string('obs')->nullable();;
                 $table->timestamps();
